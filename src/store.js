@@ -84,6 +84,9 @@ class Store {
         if (item.code === code) {
           item.selected = !item.selected;
         }
+        if(item.selected){
+          item.selectionsCount++;
+        }
         return item;
       })
     })

@@ -45,7 +45,7 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: this.generateIndex(), title: 'Новая запись'}]
+      list: [...this.state.list, {code: this.generateIndex(), title: 'Новая запись', selectionsCount: 0}]
     })
     
   };

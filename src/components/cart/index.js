@@ -10,10 +10,13 @@ function Cart({ onDelete, totalCartPrice, cart, showCart }) {
         Корзина
         <button onClick={() => showCart()}>Закрыть</button>
       </div>
-      {cart.map((el) => {
-        return <CartItem onDelete={onDelete} cartEl={el} key={el.code} />;
-      })}
-      <div className="cart-totalPrice">{totalCartPrice}</div>
+      <div className="cart-items">
+        {cart.map((el) => {
+          return <CartItem onDelete={onDelete} cartEl={el} key={el.code} />;
+        })}
+
+        <div className="cart-totalPrice">Итого {totalCartPrice}</div>
+      </div>
     </div>
   );
 }

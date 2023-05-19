@@ -46,12 +46,14 @@ function App({ store }) {
       />
       <List list={list} onAddItem={callbacks.onAddItem} />
       {isCartOpened ? (
-        <Cart
-          onDelete={callbacks.onDelete}
-          totalCartPrice={totalCartPrice}
-          cart={cart}
-          showCart={callbacks.showCart}
-        />
+        <div className="cart-wrapper">
+          <Cart
+            onDelete={callbacks.onDelete}
+            totalCartPrice={totalCartPrice}
+            cart={cart}
+            showCart={callbacks.showCart}
+          />
+        </div>
       ) : null}
     </PageLayout>
   );

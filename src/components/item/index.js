@@ -6,9 +6,8 @@ import './style.css';
 function Item(props){
 
   const callbacks = {
-    onDelete: (e) => {
-      e.stopPropagation();
-      props.onDelete(props.item.code);
+    onAdd: () => {
+      props.onAdd(props.item);
     }
   }
 
@@ -18,9 +17,10 @@ function Item(props){
       <div className='Item-title'>
         {props.item.title}
       </div>
+      <div className="Item-price">{props.item.price}₽</div>
       <div className='Item-actions'>
-        <button onClick={callbacks.onDelete}>
-          Удалить
+        <button onClick={callbacks.onAdd}>
+          Добавить
         </button>
       </div>
     </div>
@@ -32,11 +32,11 @@ Item.propTypes = {
     code: PropTypes.number,
     title: PropTypes.string,
   }).isRequired,
-  onDelete: PropTypes.func,
+  onAdd: PropTypes.func,
 };
 
 Item.defaultProps = {
-  onDelete: () => {},
+  onAdd: () => {},
 }
 
 export default React.memo(Item);

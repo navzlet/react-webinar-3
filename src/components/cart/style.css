@@ -1,0 +1,11 @@
+.cart{
+  width: 960px;
+  height: 407px;
+  background-color: aqua;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -480px;
+  margin-top: -203.5px;
+}
+

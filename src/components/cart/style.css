@@ -1,4 +1,4 @@
-.cart{
+.cart {
   width: 960px;
   height: 407px;
   background-color: aqua;
@@ -7,5 +7,5 @@
   top: 50%;
   margin-left: -480px;
   margin-top: -203.5px;
+  overflow-y: auto;
 }
-

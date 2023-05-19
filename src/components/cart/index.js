@@ -1,22 +1,30 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import './style.css'
+import PropTypes from "prop-types";
+import CartItem from "../cart-item";
+import "./style.css";
 
-function Cart({showCart}){
-  return(
+function Cart({ onDelete, totalCartPrice, cart, showCart }) {
+  return (
     <div className="cart">
-      cart1234
-      <button onClick={()=>showCart()}>close cart</button>
+      <div className="cart-header">
+        Корзина
+        <button onClick={() => showCart()}>Закрыть</button>
+      </div>
+      {cart.map((el) => {
+        return <CartItem onDelete={onDelete} cartEl={el} key={el.code} />;
+      })}
+      <div className="cart-totalPrice">{totalCartPrice}</div>
     </div>
-  )
+  );
 }
 
 Cart.propTypes = {
-  showCart: PropTypes.func
+  showCart: PropTypes.func,
+  cart: PropTypes.array,
 };
 
 Cart.defaultProps = {
-  showCart: () => {}
-}
+  showCart: () => {},
+};
 
 export default Cart;

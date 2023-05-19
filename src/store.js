@@ -1,4 +1,4 @@
-import {generateCode} from "./utils";
+import { generateCode } from "./utils";
 
 /**
  * Хранилище состояния приложения
@@ -6,7 +6,7 @@ import {generateCode} from "./utils";
 class Store {
   constructor(initState = {}) {
     this.state = initState;
-    this.state.cart = []
+    this.state.cart = [];
     this.listeners = []; // Слушатели изменений состояния
   }
 
@@ -19,8 +19,8 @@ class Store {
     this.listeners.push(listener);
     // Возвращается функция для удаления добавленного слушателя
     return () => {
-      this.listeners = this.listeners.filter(item => item !== listener);
-    }
+      this.listeners = this.listeners.filter((item) => item !== listener);
+    };
   }
 
   /**
@@ -44,13 +44,19 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItem() {
+  // addItem() {
+  //   this.setState({
+  //     ...this.state,
+  //     list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
+  //   })
+  // };
+
+  deleteCartEl(code) {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
-    })
-  };
-
+      cart: this.state.cart.filter((el) => el.code !== code),
+    });
+  }
 
   //deleteItem заменяем на addCartItem, добавление записи в корзину
   /**
@@ -58,38 +64,38 @@ class Store {
    * @param code
    */
   addCartItem(newCartItem) {
-      // Добавляем товар в корзину
-      // Проверить корзину, есть ли там тот товар который мы добавляем
-      // Если есть то увеличить count, если нет то добавить
-      // Итоговый массив объектов корзины:
-      // {code: generateCode(), title: 'Название товара', price: 100.0, count: 1},
-      // {code: generateCode(), title: 'Название товара2', price: 222.0, count: 4}
-    const isItemAdded = this.state.cart.some(item => item.code === newCartItem.code)
-    if(isItemAdded){
-      console.log('item ADDED')
+    // Добавляем товар в корзину
+    // Проверить корзину, есть ли там тот товар который мы добавляем
+    // Если есть то увеличить count, если нет то добавить
+    // Итоговый массив объектов корзины:
+    // {code: generateCode(), title: 'Название товара', price: 100.0, count: 1},
+    // {code: generateCode(), title: 'Название товара2', price: 222.0, count: 4}
+    const isItemAdded = this.state.cart.some(
+      (item) => item.code === newCartItem.code
+    );
+    if (isItemAdded) {
+      console.log("item ADDED");
       this.setState({
         ...this.state,
-        cart: this.state.cart.map((cartEl)=>{
-          if(cartEl.code === newCartItem.code ){
+        cart: this.state.cart.map((cartEl) => {
+          if (cartEl.code === newCartItem.code) {
             return {
               ...cartEl,
-              count: cartEl.count + 1
-            }
+              count: cartEl.count + 1,
+            };
           }
-          return cartEl
-        })
-        
-      })
-    }
-    else{
-      console.log('item NOT ADDED')
+          return cartEl;
+        }),
+      });
+    } else {
+      console.log("item NOT ADDED");
       this.setState({
         ...this.state,
-        cart: [...this.state.cart, {...newCartItem, count: 1}]
-      })
+        cart: [...this.state.cart, { ...newCartItem, count: 1 }],
+      });
     }
-    console.log(this.state.cart)
-  };
+    console.log(this.state.cart);
+  }
 }
 
 export default Store;

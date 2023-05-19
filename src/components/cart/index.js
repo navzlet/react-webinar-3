@@ -15,7 +15,7 @@ function Cart({ onDelete, totalCartPrice, cart, showCart }) {
           return <CartItem onDelete={onDelete} cartEl={el} key={el.code} />;
         })}
 
-        <div className="cart-totalPrice">Итого {totalCartPrice}</div>
+        <div className="cart-totalPrice">Итого {totalCartPrice} ₽</div>
       </div>
     </div>
   );

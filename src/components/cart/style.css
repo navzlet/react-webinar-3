@@ -37,12 +37,13 @@
 }
 
 .cart-items {
-  padding-top: 165px;
+  /* padding-top: 165px; */
+  position: relative;
   overflow-y: auto;
   height: 327px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .cart-totalPrice {

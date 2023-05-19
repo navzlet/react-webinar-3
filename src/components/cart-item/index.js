@@ -12,7 +12,7 @@ function CartItem(props) {
     <div className="CartItem">
       <div className="CartItem-code">{props.cartEl.code}</div>
       <div className="CartItem-title">{props.cartEl.title}</div>
-      <div className="CartItem-price">{props.cartEl.price} руб</div>
+      <div className="CartItem-price">{props.cartEl.price} ₽</div>
       <div className="CartItem-amount">{props.cartEl.count} шт</div>
       <div className="CartItem-actions">
         <button onClick={callbacks.onDelete}>Удалить</button>
